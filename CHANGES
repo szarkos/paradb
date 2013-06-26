@@ -1,0 +1,30 @@
+
+
+ - Added support for reading salted MD5 passwords (eg. Joomla 1.0.13 and greater). Thanks Tim R.
+ - Added "Close Expired Cases" link to navbar.
+ - Removed some unneeded fonts from Image_Canvas.
+ - Minor bugfixes to stats.php
+ - Pushed Image_Graph into ParaDB codebase.
+
+--------------------------------------------------------------------------------------
+2007-08-23: Released v0.2.0
+
+ - Renamed paradb/images/AGHOSTLogo.gif paradb/images/logo.gif
+ - Fixed moon image bug.
+ - Added view_caseinfo task to print out case info in XML.
+ - Fixed investigator list order in case_form.php.
+ - Fixed that damn overwrite bug when adding new investigators to a case, again...
+ - Added RSS feed capability (rss.php).
+ - Fixed several minor template bugs.
+ - Fixed SQL order bug when listing published reports on home page.
+ - Fixed overwrite bug when adding new investigators to a case.
+ - Fixed automatic case closing.
+ - Finally fixed IE6/7 tooltip bug.
+ - Updated License to GPLv3.
+ - Fixed the closing of expired cases, added task=close_expired
+    - Use URL such as http://<domain>/paradb/reportsdb.php?task=close_expired
+      This will close all expired cases, and publish associated reports if required.
+ - Fixed owner_id problem in case_form.inc.php.
+
+--------------------------------------------------------------------------------------
+2007-05-13: Released v0.1.0

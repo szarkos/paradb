@@ -1,0 +1,8 @@
+Courier,LiberationMono-Regular.ttf
+Courier Bold,LiberationMono-Bold.ttf
+Courier Bold Italic,LiberationMono-BoldItalic.ttf
+Courier Italic,LiberationMono-Italic.ttf
+Courier New,LiberationMono-Regular.ttf
+Courier New Bold,LiberationMono-Bold.ttf
+Courier New Bold Italic,LiberationMono-BoldItalic.ttf
+Courier New Italic,LiberationMono-Italic.ttf

@@ -1,0 +1,148 @@
+AGHOST Paranormal Reporting Database (ParaDB)
+Copyright (c) 2007 Stephen A. Zarkos <Obsid@Sentry.net>
+All Rights Reserved.
+
+See the file COPYING for terms of use and redistribution.
+
+
+=System Requirements=
+
+The AGHOST Paranormal Reporting Database requires Apache 1.3.x or higher,
+PHP 4.3.x or higher, and MySQL 4.x or higher.  This software has been tested
+primarily on Linux, and it should work without modification on any other
+UNIX-like operating system that supports Apache, MySQL and PHP.  It may also
+work on Windows Server, but it has not been tested on this platform at all.
+If you do get it running on Windows with Apache/MySQL/PHP, please feel free
+to drop me an email (obsid@sentry.net) and let me know how it works.
+
+
+=Installation=
+
+ This software can typically be installed and working in less than 10 minutes,
+ depending on your familiarity with setting up web services and database.  The
+ most difficult part of this installation is probably setting up the database.
+ The phpMyAdmin application can make this task a lot easier for you.  You may
+ already have the this utility available.  Check with your web hosting provider
+ if you're not sure.
+
+
+ Follow the following steps to install this software:
+
+  1) ParaDB is distributed in a number of archive formats; .zip, .tar.gz and
+     .tar.bz2.  Extract the files from this archive using the appropriate
+     application.  On Windows XP, for example, you simply need to double-click
+     on the ParaDB zip archive, called paradb-0.2.0.zip or similar and drag the
+     directory called "paradb" to your desktop or wherever you wish to place it.
+
+
+  2) Upload the paradb directory and its contents to some place that is
+     accessible to your web server (eg. into the "htdocs" directory).
+
+
+  3) Create a database called "paradb".  Your web host may be able to help you
+     with this.
+
+
+  4) Create a database user called "paradb".  Your web host may be able to help
+     you with this.
+
+	- Assign this user at least the 'select', 'insert', 'update'
+	  and 'delete' privileges to the paradb database.
+
+
+  5) Run the SQL script contained in the file paradb/install/paradb.sql. 
+     This should create 35 tables in the 'paradb'database.  If you get any 
+     errors here, stop and troubleshoot before moving on.  Again, the phpMyAdmin
+     application can help you with this.  Just select the 'paradb' database
+     you created, click the "SQL" tab, paste the contents of paradb.sql in the
+     form and click "Go".
+
+
+  6) Edit the file paradb/include/reportsdb.inc.php:
+
+	- Make sure the $DB_NAME is set to 'paradb' or whatever you 
+	  called the database you created in step 2.
+
+	- Make sure the $DB_USER is set to 'paradb' or whatever you 
+	  called the user you created in step 3.
+
+	- Set the $DB_PASS variable to the password you chose for the 
+	  database user you created in step 3.
+
+
+  7) Look through this file and configure other variables as needed.
+     Other variables that should be edited include $LOGFILE, $ADMIN_EMAIL,
+     $MAIL_FROM, $baseurl and $server_path.
+
+	- The $baseurl variable should be set to the external URL that
+	  can be used to access the software (eg. http://myserver.com/paradb).
+
+	- The $server_path variable should be set to the full path
+	  to the paradb directory on the server.  You should be able
+	  to obtain this information from your hosting provider.  For
+	  example, your path might be '/var/webusers/steve', so the
+	  $server_path will be '/var/webusers/steve/paradb'.
+
+
+  8) If everything has gone OK so far, you should now be able to navigate 
+     to http://<domain>/paradb and log in.  The default username/password 
+     is admin/admin.
+
+
+  9) After logging in, you can create new users and change the administrator 
+     password by clicking on the "User Management" link in the left navigation 
+     bar.
+
+
+  =Installation Notes=
+
+    After installation you may the log in as the administrator using the username
+    "admin" with password "admin" (without the quotes in both cases).
+
+    To take advantage of the graph generation in the Statistics page, you will need
+    the Image_Graph PEAR package installed on your server.  The package can be obtained
+    at the following location: http://pear.php.net/package/Image_Graph.  If you're working
+    in a shared hosting environment, then you may already have it installed.
+
+    The "paradb/images/stats_images" directory must be writable by the web server if you
+    wish to use the statistics generation functionality.  This is where the generated
+    plots get stored.
+
+
+
+=Upgrading=
+
+ The upgrading procedure should be pretty simple.  Since you already have the
+ database configured, all you should really need to do is upload all the files
+ to your web host, being particularly careful not to overwrite your main
+ configuration file "paradb/include/reportsdb.inc.php".
+
+  1) BACKUP THE PARADB DATABASE.
+
+  2) BACKUP YOUR PARADB INSTALLATION ON YOUR WEB HOST.
+
+  3) The above steps are easy to ignore, but really, backing up your database
+     and current installation of ParaDB is just a good idea.  In fact, it's
+     a good idea when upgrading any piece of software.  It only takes a moment,
+     and can save you a lot of trouble if something goes wrong.
+
+  4) ParaDB is distributed in a number of archive formats; .zip, .tar.gz and
+     .tar.bz2.  Extract the files from this archive using the appropriate
+     application.  On Windows XP, for example, you simply need to double-click
+     on the ParaDB zip archive, called paradb-0.2.0.zip or similar and drag the
+     directory called "paradb" to your desktop or wherever you wish to place it.
+
+  5) Back up your current ParaDB configuration file, called
+     "paradb/include/reportsdb.inc.php" on your web host.  If you accidentally
+     overwrite this you will need to re-create it and re-add the correct values
+     for your database username/password, etc.
+
+  6) Upload the paradb directory and its contents to some place that is
+     accessible to your web server (eg. into the "htdocs" directory).  Don't
+     overwrite your configuration file, called "paradb/include/reportsdb.inc.php".
+
+  7) It's usually easiest to just edit the new reportsdb.inc.php file that came
+     with this distribution so that it matches your configuration, and then
+     upload it to the paradb/include/ directory.  This way you can be sure
+     you have the most current version of this file.
+
